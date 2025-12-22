@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { getAllSlugs } from "@/lib/posts";
+import { formatDate } from "@/lib/date";
 
 const postsDir = path.join(process.cwd(), "content", "posts");
 
@@ -59,7 +60,12 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <main>
       <h1 className="text-3xl font-bold">{frontmatter.title ?? slug}</h1>
-      {frontmatter.date && <div className="mt-2 text-sm opacity-70">{frontmatter.date}</div>}
+      {frontmatter.date && <time
+          dateTime={frontmatter.date}
+          className="mt-2 block text-sm opacity-70"
+        >
+          {formatDate(frontmatter.date)}
+        </time>}
       <article className="prose mt-8 max-w-none">{content}</article>
     </main>
   );

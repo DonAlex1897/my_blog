@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
+import { formatDate } from "@/lib/date";
 
 export const metadata = { title: "Blog" };
 
@@ -18,7 +19,12 @@ export default function BlogPage() {
                 {p.meta.title}
               </Link>
             </h2>
-            <div className="text-sm opacity-70">{p.meta.date}</div>
+            <time
+              dateTime={p.meta.date}
+              className="mt-2 block text-sm opacity-70"
+              >
+              {formatDate(p.meta.date)}
+              </time>
             {p.meta.summary && <p className="opacity-80">{p.meta.summary}</p>}
           </article>
         ))}
