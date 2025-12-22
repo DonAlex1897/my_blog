@@ -66,7 +66,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         >
           {formatDate(frontmatter.date)}
         </time>}
-      <article className="prose mt-8 max-w-none">{content}</article>
+      <article className="prose prose-invert mt-8 max-w-none">{content}</article>
     </main>
   );
 }

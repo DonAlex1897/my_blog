@@ -7,7 +7,7 @@ export default function AboutPage() {
     <main>
       <h1 className="text-3xl font-bold">About</h1>
 
-      <div className="prose mt-6 max-w-none">
+      <div className="prose prose-invert mt-6 max-w-none">
         <p>
           I’m Amin. I build software, and I use this blog
           to write down things I learn and things I want to remember.
