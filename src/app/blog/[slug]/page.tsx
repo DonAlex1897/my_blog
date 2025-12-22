@@ -56,14 +56,10 @@ export default async function BlogPostPage({ params }: PageProps) {
     },
   });
 
-  const title = frontmatter.title ?? slug;
-  const date = frontmatter.date ?? "";
-
   return (
-    <main className="mx-auto max-w-3xl px-6 py-10">
-      <h1 className="text-3xl font-bold">{title}</h1>
-      {date && <div className="mt-2 text-sm opacity-70">{date}</div>}
-
+    <main>
+      <h1 className="text-3xl font-bold">{frontmatter.title ?? slug}</h1>
+      {frontmatter.date && <div className="mt-2 text-sm opacity-70">{frontmatter.date}</div>}
       <article className="prose mt-8 max-w-none">{content}</article>
     </main>
   );
