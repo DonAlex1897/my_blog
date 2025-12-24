@@ -23,6 +23,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
+      </head>
       <body>
         <header className="border-b">
           <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
