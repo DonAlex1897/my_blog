@@ -3,6 +3,7 @@ title: "Hello World"
 date: "2025-12-22"
 summary: "First post to verify MDX rendering."
 category: "meta"
+draft: true
 ---
 
 # Hello World

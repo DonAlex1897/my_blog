@@ -24,6 +24,7 @@ type Frontmatter = {
   category?: string;
   summary?: string;
   tags?: string[];
+  draft?: boolean;
 };
 
 export default async function BlogPostPage({ params }: PageProps) {
@@ -36,8 +37,6 @@ export default async function BlogPostPage({ params }: PageProps) {
     : fs.existsSync(filePathMd)
     ? filePathMd
     : null;
-
-  console.log("filePath:", filePath);
 
   if (!filePath) return notFound();
 
@@ -56,6 +55,9 @@ export default async function BlogPostPage({ params }: PageProps) {
       },
     },
   });
+
+  const isProd = process.env.NODE_ENV === "production";
+  if (isProd && frontmatter.draft) return notFound();
 
   return (
     <main>

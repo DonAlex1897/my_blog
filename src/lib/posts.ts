@@ -8,6 +8,7 @@ export type PostMeta = {
   category?: string;
   summary?: string;
   tags?: string[];
+  draft?: boolean;
 };
 
 export type Post = {
@@ -39,10 +40,19 @@ export function getAllPosts(): Post[] {
     return { slug, meta };
   });
 
-  // newest first (expects date like "2025-01-01")
-  posts.sort((a, b) => (a.meta.date < b.meta.date ? 1 : -1));
+  const includeDrafts = process.env.NODE_ENV !== "production";
 
-  return posts;
+  const filteredPosts = posts.filter((post) => {
+    if (post.meta.draft) {
+      return includeDrafts;
+    }
+    return true;
+  });
+
+  // newest first (expects date like "2025-01-01")
+  filteredPosts.sort((a, b) => (a.meta.date < b.meta.date ? 1 : -1));
+
+  return filteredPosts;
 }
 
 export function getAllSlugs(): string[] {
