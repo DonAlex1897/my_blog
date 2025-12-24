@@ -35,13 +35,14 @@ export function getAllPosts(): Post[] {
       category: data.category ? String(data.category) : undefined,
       summary: data.summary ? String(data.summary) : undefined,
       tags: Array.isArray(data.tags) ? data.tags.map(String) : undefined,
+      draft: data.draft === true,
     };
 
     return { slug, meta };
   });
 
   const includeDrafts = process.env.NODE_ENV !== "production";
-
+  
   const filteredPosts = posts.filter((post) => {
     if (post.meta.draft) {
       return includeDrafts;
