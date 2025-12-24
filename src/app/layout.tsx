@@ -44,8 +44,13 @@ export default function RootLayout({
         <div className="mx-auto max-w-3xl px-6 py-10">{children}</div>
 
         <footer className="mt-16 border-t">
-          <div className="mx-auto max-w-3xl px-6 py-8 text-sm opacity-70">
-            © {new Date().getFullYear()} Amin
+          <div className="mx-auto max-w-3xl px-6 py-8 text-sm opacity-70 flex space-x-6">
+            <div>© {new Date().getFullYear()} Amin Kaviani</div>
+            <div>
+              <a href="/rss.xml" className="underline underline-offset-4">
+                Subscribe (RSS)
+              </a>
+            </div>
           </div>
         </footer>
       </body>
