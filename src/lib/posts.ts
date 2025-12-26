@@ -41,7 +41,7 @@ export function getAllPosts(): Post[] {
     return { slug, meta };
   });
 
-  const includeDrafts = process.env.NODE_ENV !== "production";
+  const includeDrafts = process.env.INCLUDE_DRAFTS === "true";
   
   const filteredPosts = posts.filter((post) => {
     if (post.meta.draft) {
